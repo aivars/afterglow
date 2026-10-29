@@ -1,0 +1,29 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: Build
+        run: swift build
+      - name: Test
+        run: swift test
+
+  ios-build:
+    runs-on: macos-15
+    continue-on-error: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - name: Build for iOS Simulator
+        run: xcodebuild -scheme Afterglow -destination 'generic/platform=iOS Simulator' build -skipPackagePluginValidation
