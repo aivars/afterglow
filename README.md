@@ -22,6 +22,10 @@ As shipped in [Freedive Apnea](https://apps.apple.com/app/id1188724407) with its
 
 ![iPad landscape form sheet](Docs/screenshots/ipad-landscape.png)
 
+## Claude Code skill
+
+`skills/afterglow-integrate/` is a Claude Code skill that integrates the package into an iOS app: it adds the dependency, drafts the What's New items for the next minor version from your changelog or git history, fetches and curates real App Store reviews as testimonials (FeedbackThread, App Store Connect CLI, Apple's public feed, or paste), writes the `<App>Afterglow.swift` content file, wires the root view and Settings rows, and retires competing `requestReview` calls. It refuses onboarding placement and rating gates. Copy the folder to `~/.claude/skills/` and ask Claude to "add Afterglow to this app".
+
 ## Try it
 
 `Example/AfterglowExample.xcodeproj` is a universal (iPhone and iPad) demo app wired to the package. Open it in Xcode and run it on any simulator, or see the launch arguments under [iPad](#ipad).
