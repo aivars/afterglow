@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `RatingSummary` gains `scope` (`.storefront` by default, `.worldwide`). A worldwide total is labelled "6,000+ ratings worldwide" in all six languages, because no storefront shows that number.
+
 ## 1.0.0 — 2026-10-29
 
 - One What's New sheet per minor version, shown right after an app update. Never on a fresh install, never for patch bumps, and skipped minors show only the newest note.

@@ -37,7 +37,8 @@ enum L10n {
     }
 
     /// "6,000+ ratings"; `count` is already formatted and rounded.
-    static func ratingsCount(_ count: String) -> String {
-        String(localized: "\(count) ratings", bundle: .module)
+    static func ratingsCount(_ count: String, worldwide: Bool = false) -> String {
+        if worldwide { return String(localized: "\(count) ratings worldwide", bundle: .module) }
+        return String(localized: "\(count) ratings", bundle: .module)
     }
 }

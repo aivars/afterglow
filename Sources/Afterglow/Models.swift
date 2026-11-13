@@ -134,11 +134,22 @@ public struct RatingSummary: Sendable {
     public let average: Double
     /// The raw number of ratings, e.g. 6059.
     public let count: Int
+    /// Which ratings `count` covers. The App Store shows each storefront its own count, so a total
+    /// summed over every storefront is larger than what any one person sees there; say so.
+    public let scope: Scope
+
+    public enum Scope: Sendable {
+        /// The count of one storefront, as the App Store shows it there. The badge reads "6,000+ ratings".
+        case storefront
+        /// The count summed over every storefront. The badge reads "6,000+ ratings worldwide".
+        case worldwide
+    }
 
     /// Creates a summary from the raw App Store average and rating count.
-    public init(average: Double, count: Int) {
+    public init(average: Double, count: Int, scope: Scope = .storefront) {
         self.average = average
         self.count = count
+        self.scope = scope
     }
 }
 

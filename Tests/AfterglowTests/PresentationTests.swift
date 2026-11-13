@@ -21,6 +21,18 @@ struct RatingBadgeTests {
         return nil
     }
 
+    /// A count summed over every storefront is larger than what the App Store shows any one
+    /// person, so the badge says so; a storefront count keeps the plain wording.
+    @Test func worldwideScopeIsLabelled() {
+        let worldwide = RatingBadgeContent.make(
+            summary: RatingSummary(average: 4.8, count: 6073, scope: .worldwide),
+            minimumCount: 50, minimumAverage: 4.0, locale: en
+        )
+        #expect(texts(worldwide)?.1.contains("worldwide") == true)
+        #expect(texts(worldwide)?.1.contains("6,000+") == true)
+        #expect(texts(make(4.8, 6073))?.1.contains("worldwide") == false)
+    }
+
     @Test func nilSummaryIsStarsOnly() {
         #expect(RatingBadgeContent.make(summary: nil, minimumCount: 50, minimumAverage: 4.0, locale: en) == .starsOnly)
     }
