@@ -116,7 +116,7 @@ One honest caveat: Apple shows its system rating prompt at most three times per 
 
 - **What's New**: 3 to 5 rows per release. More than 5 is fine (the sheet scrolls) but dilutes the message.
 - **Testimonials**: up to 3 are shown. Keep each quote under about 220 characters; the view never truncates, so a long quote makes a tall card. DEBUG builds hit an `assertionFailure` above 400 characters; release builds never crash.
-- **Rating badge**: pass the raw `RatingSummary(average:count:)`. The sheet rounds the count down ("6059" becomes "6,000+", "348" becomes "300+", under 100 stays exact) and localizes it. Below `minimumRatingCount` (default 50) or `minimumRatingAverage` (default 4.0) the badge shows plain stars, because a small or weak number hurts more than it helps.
+- **Rating badge**: pass the raw `RatingSummary(average:count:)`. The sheet rounds the count down ("6059" becomes "6,000+", "348" becomes "300+", under 100 stays exact) and localizes it. Below `minimumRatingCount` (default 50) or `minimumRatingAverage` (default 4.0) the badge shows plain stars, because a small or weak number hurts more than it helps. The App Store shows each storefront its own count, so if you pass a total summed over all storefronts, say so with `RatingSummary(average:count:scope: .worldwide)` and the badge reads "6,000+ ratings worldwide".
 - **Optional pieces**: with no `communityLine` the pill is omitted; with no `testimonials` the cards are omitted and the pill shows without avatars; with neither, only the badge, title, subtitle and one-line "why rate" text show.
 
 ## Choosing icons

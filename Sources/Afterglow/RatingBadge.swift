@@ -26,6 +26,6 @@ enum RatingBadgeContent: Equatable, Sendable {
         default: rounded = count; suffix = ""
         }
         let number = rounded.formatted(.number.grouping(.automatic).locale(locale))
-        return .summary(averageText: averageText, countText: L10n.ratingsCount(number + suffix))
+        return .summary(averageText: averageText, countText: L10n.ratingsCount(number + suffix, worldwide: summary.scope == .worldwide))
     }
 }
